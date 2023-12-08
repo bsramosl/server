@@ -1,0 +1,4 @@
+mkdir restaurant-api
+cd restaurant-api
+npm init -y
+npm install express mysql
