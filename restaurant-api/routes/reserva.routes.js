@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Menu = require('./menu.model');
+const Reserva = require('../model/reserva.model');
 
 router.get('/', (req, res) => {
-  Menu.getList((err, results) => {
+    Reserva.getList((err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Menu.get(req.params.id, (err, result) => {
+    Reserva.get(req.params.id, (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -23,31 +23,31 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Menu.create(req.body, (err) => {
+  MeReservanu.create(req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.status(201).json({ message: 'Menu created successfully' });
+      res.status(201).json({ message: 'Reserva created successfully' });
     }
   });
 });
 
 router.put('/:id', (req, res) => {
-  Menu.update(req.params.id, req.body, (err) => {
+    Reserva.update(req.params.id, req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json({ message: 'Menu updated successfully' });
+      res.json({ message: 'Reserva updated successfully' });
     }
   });
 });
 
 router.delete('/:id', (req, res) => {
-  Menu.delete(req.params.id, (err) => {
+    Reserva.delete(req.params.id, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json({ message: 'Menu deleted successfully' });
+      res.json({ message: 'Reserva deleted successfully' });
     }
   });
 });

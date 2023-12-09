@@ -1,4 +1,7 @@
-mkdir restaurant-api
-cd restaurant-api
+ 
 npm init -y
 npm install express mysql
+
+
+
+npm install express mysql jsonwebtoken body-parser cors
