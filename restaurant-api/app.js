@@ -6,6 +6,9 @@ const reservaRoutes = require('./routes/reserva.routes');
 const userRoutes = require('./routes/user.routes'); 
 const ubicacionRoutes = require('./routes/ubicacion.routes'); 
 const barRoutes = require('./routes/bar.routes'); 
+const pedidoRoutes = require('./routes/pedido.routes'); 
+const detpedidoRoutes = require('./routes/detallepedido.routes'); 
+
 const cors = require('cors'); 
 
 
@@ -20,6 +23,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/auth', userRoutes); 
 app.use('/api/location', ubicacionRoutes); 
 app.use('/api/bar', barRoutes); 
+app.use('/api/pedido',pedidoRoutes); 
+
+app.use('/api/detpedido',detpedidoRoutes); 
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
