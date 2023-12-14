@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Pedido = require('../model/pedido.model');
+const DetReserva = require('../model/detreserva.model');
 
 router.get('/', (req, res) => {
-    Pedido.getList((err, results) => {
+    DetReserva.getList((err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Pedido.get(req.params.id, (err, result) => {
+    DetReserva.get(req.params.id, (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -23,31 +23,31 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Pedido.create(req.body, (err) => {
+    DetReserva.create(req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.status(201).json({ message: 'Pedido created successfully' });
+      res.status(201).json({ message: 'Reserva created successfully' });
     }
   });
 });
 
 router.put('/:id', (req, res) => {
-    Pedido.update(req.params.id, req.body, (err) => {
+    DetReserva.update(req.params.id, req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json({ message: 'Pedido updated successfully' });
+      res.json({ message: 'Reserva updated successfully' });
     }
   });
 });
 
 router.delete('/:id', (req, res) => {
-    Pedido.delete(req.params.id, (err) => {
+    DetReserva.delete(req.params.id, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json({ message: 'Pedido deleted successfully' });
+      res.json({ message: 'Reserva deleted successfully' });
     }
   });
 });

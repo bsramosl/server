@@ -7,6 +7,9 @@ const connection = mysql.createConnection(dbConfig);
 connection.connect();
 
 const Menu = {
+  getListBar: (id,callback) => {
+    connection.query('SELECT * FROM menu WHERE id_bar = ?', [id], callback);
+  },
   getList: (callback) => {
     connection.query('SELECT * FROM menu', callback);
   },

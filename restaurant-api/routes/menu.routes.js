@@ -52,4 +52,14 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+router.get('/bar/:id', (req, res) => {
+  Menu.getListBar(req.params.id, (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
 module.exports = router;
