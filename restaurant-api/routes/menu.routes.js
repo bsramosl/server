@@ -55,7 +55,8 @@ router.delete('/:id', (req, res) => {
 router.get('/bar/:id', (req, res) => {
   Menu.getListBar(req.params.id, (err, result) => {
     if (err) {
-      res.status(500).json({ error: err.message });
+      console.error('Error in getListBar:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
     } else {
       res.json(result);
     }

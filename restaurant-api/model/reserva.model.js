@@ -8,8 +8,10 @@ connection.connect();
 
 const Reserva = {
   getList: (callback) => {
-    connection.query('SELECT * FROM reserva', callback);
+    connection.query('SELECT * FROM reserva res JOIN usuario usu ON res.id_usuario = usu.id_usuario', callback);
   },
+ 
+
   get: (id, callback) => {
     connection.query('SELECT * FROM reserva WHERE id_reserva = ?', [id], callback);
   },
