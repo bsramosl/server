@@ -9,7 +9,6 @@ connection.connect();
 function registerUser(userData) {
   return new Promise((resolve, reject) => {
     const query = 'INSERT INTO usuario SET ?';
-
     connection.query(query, userData, (error, results) => {
       if (error) {
         reject(error);

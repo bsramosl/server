@@ -15,6 +15,11 @@ const DetReserva = {
     connection.query('SELECT * FROM detalle_reserva dp JOIN menu m ON dp.id_menu = m.id_menu WHERE dp.id_detalle_reserva = ?', [id], callback);
   },
 
+  getdet: (id, callback) => {
+    connection.query('SELECT * FROM detalle_reserva dp JOIN menu m ON dp.id_menu = m.id_menu WHERE dp.id_reserva = ?', [id], callback);
+  },
+
+
   create: (newPedido, callback) => { 
     let idReserva;
     const reservaValues = [
@@ -38,7 +43,6 @@ const DetReserva = {
            if (error) {
              callback(error, null);
            } else {
-            console.log(result)
              callback(null, result);
            }
          });

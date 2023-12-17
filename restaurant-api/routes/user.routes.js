@@ -15,6 +15,17 @@ router.post('/registro', async (req, res) => {
 }); 
 
 
+router.post('/', (req, res) => {
+  User.create(req.body, (err) => {
+  if (err) {
+    res.status(500).json({ error: err.message });
+  } else {
+    res.status(201).json({ message: 'Usuario created successfully' });
+  }
+});
+});
+
+
 router.get('/', (req, res) => {
   User.getList((err, results) => {
     if (err) {

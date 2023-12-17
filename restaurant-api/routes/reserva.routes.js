@@ -11,6 +11,16 @@ router.get('/', (req, res) => {
     }
   });
 });
+ 
+router.get('/user/:id', (req, res) => {
+  Reserva.getIdUser(req.params.id, (err, result) => {
+  if (err) {
+    res.status(500).json({ error: err.message });
+  } else {
+    res.json(result);
+  }
+});
+});
 
 router.get('/:id', (req, res) => {
     Reserva.get(req.params.id, (err, result) => {
@@ -40,6 +50,16 @@ router.put('/:id', (req, res) => {
       res.json({ message: 'Reserva updated successfully' });
     }
   });
+});
+
+router.put('/estado/:id', (req, res) => {
+  Reserva.updateEstado(req.params.id, req.body, (err) => {
+  if (err) {
+    res.status(500).json({ error: err.message });
+  } else {
+    res.json({ message: 'Reserva updated successfully' });
+  }
+});
 });
 
 router.delete('/:id', (req, res) => {

@@ -17,9 +17,19 @@ router.get('/:id', (req, res) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json(result[0]);
+      res.json(result);
     }
   });
+});
+
+router.get('/det/:id', (req, res) => {
+  DetReserva.getdet(req.params.id, (err, result) => {
+  if (err) {
+    res.status(500).json({ error: err.message });
+  } else {
+    res.json(result);
+  }
+});
 });
 
 router.post('/', (req, res) => {
