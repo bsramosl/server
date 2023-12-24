@@ -12,6 +12,7 @@ router.post('/login', (req, res) => {
       res.status(500).json({ success: false, message: 'Error en el servidor' });
     } else {
       res.json(result);
+      console.log(result);
     }
   });
 });

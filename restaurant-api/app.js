@@ -7,6 +7,7 @@ const userRoutes = require('./routes/user.routes');
 const ubicacionRoutes = require('./routes/ubicacion.routes'); 
 const barRoutes = require('./routes/bar.routes'); 
 const detreservaRoutes = require('./routes/detallereserva.routes'); 
+const empleadoRoutes = require('./routes/empleado.routes'); 
 
 const cors = require('cors'); 
 
@@ -23,6 +24,8 @@ app.use('/api/auth', userRoutes);
 app.use('/api/location', ubicacionRoutes); 
 app.use('/api/bar', barRoutes); 
 app.use('/api/detreserva',detreservaRoutes); 
+app.use('/api/empleado',empleadoRoutes); 
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
