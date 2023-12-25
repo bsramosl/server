@@ -12,7 +12,6 @@ const DetReserva = {
   },
 
   get: (id, callback) => {
-    console.log(id)
     connection.query('SELECT * FROM detalle_reserva dp JOIN menu m ON dp.id_menu = m.id_menu WHERE dp.id_reserva = ?', [id], callback);
   },
 
