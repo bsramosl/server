@@ -16,11 +16,12 @@ function loginUser(username, password, callback) {
       return callback(err, null);
     }
     if (result.length > 0) {
+      console.log(result);
       const user = result[0];
       // No es necesario devolver la contraseña en la respuesta
       delete user.contrasena;
       // Generar un token JWT
-      const token = jwt.sign({ userId: user.id_usuario, username: user.usuario, nombre_tipo_usuario: user.nombre_tipo_usuario ,id_tipo_usuario: user.id_tipo_usuario }, secretKey, { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user.id_usuario, username: user.usuario, nombre_tipo_usuario: user.nombre_tipo_usuario ,id_tipo_usuario: user.id_tipo_usuario,id_bar: user.id_bar}, secretKey, { expiresIn: '1h' });
       // Devolver el token y la información del usuario
       const response = { success: true, token, user };
       callback(null, response);
@@ -36,7 +37,6 @@ function recoveryUser(email, callback) {
   // Verificar si el correo electrónico existe en la base de datos
   const query = 'SELECT * FROM usuario WHERE correo = ?';
   connection.query(query, [email], (err, result) => {
-    console.log(email)
     if (err) {
       return callback(err, null);
     }
@@ -72,8 +72,7 @@ function recoveryUser(email, callback) {
       transporter.sendMail(mailOptions, (mailError, info) => {
         if (mailError) {
           console.error(mailError);
-          return callback(mailError, null);
-        }
+          return callback(mailError, null);        }
 
         // Devolver el token y la información del usuario
         const response = { success: true, message: 'Correo electrónico enviado con éxito' };
