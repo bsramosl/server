@@ -10,7 +10,7 @@ connection.connect();
 const secretKey = 'tu_clave_secreta'; // Cambia esto en un entorno de producción.
 
 function loginUser(username, password, callback) {
-  const query = 'SELECT * FROM usuario us JOIN tipo_usuario tpu ON us.id_tipo_usuario = tpu.id_tipo_usuario  WHERE us.usuario = ? AND us.contrasena = ?';
+  const query = 'SELECT us.*, tpu.nombre_tipo_usuario, emp.id_empleado_bar, emp.id_bar, emp.nombre, emp.apellido, emp.estado as estado_empleado FROM usuario us JOIN tipo_usuario tpu ON us.id_tipo_usuario = tpu.id_tipo_usuario LEFT JOIN empleado_bar emp ON us.usuario = emp.usuario WHERE us.usuario = ? AND us.contrasena = ?';
   connection.query(query, [username, password], (err, result) => {
     if (err) {
       return callback(err, null);
