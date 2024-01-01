@@ -7,7 +7,7 @@ connection.connect();
 
 const Bar = {
   getList: (callback) => {
-    connection.query('SELECT * FROM bar ba JOIN ubicacion ub ON ba.id_ubicacion = ub.id_ubicacion', callback);
+    connection.query('SELECT * FROM bar ba  INNER JOIN ubicacion ub ON ba.id_ubicacion = ub.id_ubicacion', callback);
   },
 
   get: (id, callback) => {
