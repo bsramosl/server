@@ -61,7 +61,7 @@ const Bar = {
           updatedBar.merienda_horario,
         ]
         ];  
-        connection.query('UPDATE ubicacion SET nombre_bar = ?, id_ubicacion = ?, desayuno_horario = ?, almuerzo_horario = ?, merienda_horario = ? WHERE id_bar = ?', [updatedBar.nombre_bar,updatedBar.id_ubicacion, updatedBar.desayuno_horario,updatedBar.almuerzo_horario,updatedBar.merienda_horario,id], (error, result) => {
+        connection.query('UPDATE bar SET nombre_bar = ?, id_ubicacion = ?, desayuno_horario = ?, almuerzo_horario = ?, merienda_horario = ? WHERE id_bar = ?', [updatedBar.nombre_bar,updatedBar.id_ubicacion, updatedBar.desayuno_horario,updatedBar.almuerzo_horario,updatedBar.merienda_horario,id], (error, result) => {
           if (error) {
             callback(error, null);
           } else {
