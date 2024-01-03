@@ -2,6 +2,22 @@ const express = require('express');
 const router = express.Router();
 const Menu = require('../model/menu.model');
 
+
+const multer = require('multer'); // Agrega Multer para manejar archivos
+ 
+// Configuración de Multer para guardar archivos en la carpeta 'uploads'
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'upload/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
+
+
 router.get('/', (req, res) => {
   Menu.getList((err, results) => {
     if (err) {
@@ -22,7 +38,9 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/',upload.single('imagen'), (req, res) => {
+  const imagePath = req.file.path;
+  req.body.foto = `http://localhost:3000/${imagePath}`; 
   Menu.create(req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -32,7 +50,10 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', upload.single('imagen'),(req, res) => {
+  const imagePath = req.file.path;
+  console.log(req.file.path)  
+  req.body.foto = `http://localhost:3000/${imagePath}`;   
   Menu.update(req.params.id, req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
