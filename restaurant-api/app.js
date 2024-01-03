@@ -17,6 +17,7 @@ const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/upload', express.static('upload/'));
 app.use('/api/menu', menuRoutes);
 app.use('/api/reserva', reservaRoutes);
 app.use('/api/auth', authRoutes); 
