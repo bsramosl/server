@@ -49,7 +49,6 @@ const Bar = {
   },
 
   update: (id, updatedBar, callback) => {   
-    console.log(updatedBar.nombre_bar, updatedBar.latitud, updatedBar.longitud, updatedBar.id_ubicacion)
     connection.query('UPDATE ubicacion SET nombre_ubicacion = ?, latitud = ?, longitud = ? WHERE id_ubicacion = ?', [updatedBar.nombre_bar, updatedBar.latitud, updatedBar.longitud, updatedBar.id_ubicacion], (error, result) => {
       if (error) {
         callback(error, null);
