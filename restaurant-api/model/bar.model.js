@@ -21,7 +21,7 @@ const Bar = {
     let idUbicacion;
     const ubicacion = [
         [newBar.nombre_bar,newBar.latitud,newBar.longitud]
-    ];
+    ];  
     connection.query('INSERT INTO ubicacion (nombre_ubicacion, latitud, longitud) VALUES ?', [ubicacion], (error, result) => {
       if (error) {
         callback(error, null);
