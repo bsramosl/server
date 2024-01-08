@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { User, userService } = require('../model/user.model');
+const { User, registerUser } = require('../model/user.model');
 
 // Ruta para el registro de usuario
 router.post('/registro', async (req, res) => {
   try {
     const userData = req.body;
-    const registeredUser = await userService.registerUser(userData);
+    console.log(userData)
+    const registeredUser = await registerUser(userData);
     res.status(201).json(registeredUser);
   } catch (error) {
     console.error('Error durante el registro:', error);

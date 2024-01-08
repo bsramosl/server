@@ -7,6 +7,7 @@ const connection = mysql.createConnection(dbConfig);
 connection.connect();
 
 function registerUser(userData) {
+  console.log(userData);
   return new Promise((resolve, reject) => {
     const query = 'INSERT INTO usuario SET ?';
     connection.query(query, userData, (error, results) => {
