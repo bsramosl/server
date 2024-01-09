@@ -23,10 +23,10 @@ const DetReserva = {
   create: (newPedido, callback) => { 
     let idReserva;
     const reservaValues = [
-        [newPedido.id_usuario, newPedido.fecha_reserva, newPedido.estado, newPedido.codigo_estado]
+        [newPedido.id_usuario, newPedido.fecha_reserva, newPedido.estado, newPedido.codigo_estado,newPedido.comentario]
     ];
 
-    connection.query('INSERT INTO reserva (id_usuario, fecha_reserva, estado, codigo_estado) VALUES ?', [reservaValues], (error, result) => {
+    connection.query('INSERT INTO reserva (id_usuario, fecha_reserva, estado, codigo_estado,comentario) VALUES ?', [reservaValues], (error, result) => {
        if (error) {
          callback(error, null);
          return;
