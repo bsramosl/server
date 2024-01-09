@@ -7,6 +7,7 @@ const { DB_HOST,
 
 module.exports = {
   host: DB_HOST,
+  port:DB_PORT,
   user: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,
