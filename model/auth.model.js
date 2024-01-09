@@ -52,8 +52,8 @@ function recoveryUser(email, callback) {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'sespinozac@unemi.edu.ec',
-          pass: 'ydihpiutizuwzefu',
+          user: 'steeven10f@gmail.com',
+          pass: 'qhdkzhfndbzaqbyb',
         },
         tls: {
           rejectUnauthorized: false, // Aceptar certificados autofirmados
