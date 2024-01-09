@@ -1,5 +1,5 @@
 // menu.model.js
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const dbConfig = require('../db.config');
 
 const connection = mysql.createConnection(dbConfig);

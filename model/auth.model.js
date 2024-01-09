@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const jwt = require('jsonwebtoken');
 const dbConfig = require('../db.config');
 const nodemailer = require('nodemailer');
@@ -52,8 +52,8 @@ function recoveryUser(email, callback) {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'steeven10f@gmail.com',
-          pass: 'qhdkzhfndbzaqbyb',
+          user: 'sespinozac@unemi.edu.ec',
+          pass: 'ydihpiutizuwzefu',
         },
         tls: {
           rejectUnauthorized: false, // Aceptar certificados autofirmados
