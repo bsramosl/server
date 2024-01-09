@@ -1,4 +1,7 @@
 const express = require('express');
+
+const {PORT} = require('./config');
+
 const bodyParser = require('body-parser');
 const menuRoutes = require('./routes/menu.routes'); 
 const authRoutes = require('./routes/auth.routes'); 
@@ -13,7 +16,7 @@ const cors = require('cors');
 
 
 const app = express();
-const port = 3000;
+const port = PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
