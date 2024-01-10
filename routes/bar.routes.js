@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/',  upload.single('imagen'), (req, res) => { 
   const imagePath = req.file.path;
-  req.body.imagen = `http://localhost:3000/${imagePath}`; 
+  req.body.imagen = `${imagePath}`; 
     Bar.create(req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -54,7 +54,7 @@ router.put('/:id', upload.single('imagen'), (req, res) => {
 
   if (imagePath) {
     // Si hay una nueva imagen, actualizar con la nueva ruta
-    req.body.imagen = `http://localhost:3000/${imagePath}`;
+    req.body.imagen = `${imagePath}`;
   }   
     Bar.update(req.params.id, req.body, (err) => {
     if (err) {

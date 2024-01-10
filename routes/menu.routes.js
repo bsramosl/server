@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/',upload.single('imagen'), (req, res) => {
   const imagePath = req.file.path;
-  req.body.foto = `http://localhost:3000/${imagePath}`; 
+  req.body.foto = `${imagePath}`; 
   Menu.create(req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -53,7 +53,7 @@ router.post('/',upload.single('imagen'), (req, res) => {
 router.put('/:id', upload.single('imagen'),(req, res) => {
   const imagePath = req.file.path;
   console.log(req.file.path)  
-  req.body.foto = `http://localhost:3000/${imagePath}`;   
+  req.body.foto = `${imagePath}`;   
   Menu.update(req.params.id, req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
