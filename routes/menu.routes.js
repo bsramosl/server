@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/',upload.single('imagen'), (req, res) => {
+router.post('/',upload.single('foto'), (req, res) => {
   const imagePath = req.file.path;
   req.body.foto = `${imagePath}`; 
   Menu.create(req.body, (err) => {
@@ -50,10 +50,12 @@ router.post('/',upload.single('imagen'), (req, res) => {
   });
 });
 
-router.put('/:id', upload.single('imagen'),(req, res) => {
-  const imagePath = req.file.path;
-  console.log(req.file.path)  
-  req.body.foto = `${imagePath}`;   
+router.put('/:id', upload.single('foto'),(req, res) => { 
+  const imagePath = req.file ? req.file.path : null; 
+  if (imagePath) {
+    // Si hay una nueva imagen, actualizar con la nueva ruta
+    req.body.foto = `${imagePath}`;
+  }  
   Menu.update(req.params.id, req.body, (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
