@@ -20,7 +20,8 @@ router.post('/login', (req, res) => {
 
 router.post('/password-reset', (req, res) => {
   const email = req.body.email;
-  authModel.recoveryUser(email, (err, result) => {
+  const origin = req.body.origin 
+  authModel.recoveryUser(email,origin, (err, result) => {
     if (err) {
         console.error(err);
       res.status(500).json({ success: false, message: 'Error en el servidor' });

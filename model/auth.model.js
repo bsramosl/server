@@ -32,9 +32,9 @@ function loginUser(username, password, callback) {
   });
 }
 
-function recoveryUser(email, callback) {
+function recoveryUser(email,origin, callback) {
+  const baseUrl = origin
   // Verificar si el correo electrónico existe en la base de datos
-  console.log(email);
   const query = 'SELECT * FROM usuario WHERE correo = ?';
   connection.query(query, [email], (err, result) => {
     if (err) {
@@ -65,7 +65,7 @@ function recoveryUser(email, callback) {
         from: 'tu_correo@gmail.com',
         to: email,
         subject: 'Recuperación de Contraseña',
-        html: `Haz clic en el siguiente enlace para restablecer tu contraseña: <a href="http://localhost:4200/reset-password?token=${resetToken}">Restablecer Contraseña</a>`,
+        html: `Haz clic en el siguiente enlace para restablecer tu contraseña: <a href="${baseUrl}/reset-password?token=${resetToken}">Restablecer Contraseña</a>`,
       };
 
       // Enviar el correo electrónico
