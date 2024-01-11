@@ -52,8 +52,8 @@ function recoveryUser(email,origin, callback) {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'sespinozac@unemi.edu.ec',
-          pass: 'ydihpiutizuwzefu',
+          user: 'stalinec2002@gmail.com',
+          pass: 'trtblavmzhnmtlmy',
         },
         tls: {
           rejectUnauthorized: false, // Aceptar certificados autofirmados
@@ -62,7 +62,7 @@ function recoveryUser(email,origin, callback) {
 
       // Configurar el contenido del correo electrónico
       const mailOptions = {
-        from: 'tu_correo@gmail.com',
+        from: 'stalinec2002@gmail.com',
         to: email,
         subject: 'Recuperación de Contraseña',
         html: `Haz clic en el siguiente enlace para restablecer tu contraseña: <a href="${baseUrl}/reset-password?token=${resetToken}">Restablecer Contraseña</a>`,
