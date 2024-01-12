@@ -23,7 +23,13 @@ const Menu = {
     connection.query('UPDATE menu SET ? WHERE id_menu = ?', [updatedMenu, id], callback);
   },
   delete: (id, callback) => {
-    connection.query('DELETE FROM menu WHERE id_menu = ?', [id], callback);
+    connection.query('DELETE FROM detalle_reserva WHERE id_menu = ?', [id], (error) => {
+      if (error) {
+        return callback(error);
+      }  
+      // Ahora que los registros relacionados se han eliminado, eliminar la fila en menu
+      connection.query('DELETE FROM menu WHERE id_menu = ?', [id], callback);
+    });  
   },
 };
 
