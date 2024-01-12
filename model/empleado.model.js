@@ -13,9 +13,23 @@ const Empleado = {
     get: (id, callback) => {
       connection.query('SELECT * FROM empleado_bar WHERE id_empleado_bar = ?', [id], callback);
     },
-    create: (newUser, callback) => {
-      connection.query('INSERT INTO empleado_bar SET ?', newUser, callback);
+
+
+    create: (newUser, callback) => {  
+      const valores = [
+        [newUser.id_bar,newUser.usuario,newUser.nombre,newUser.apellido,newUser.estado]
+    ];
+
+      connection.query('INSERT INTO empleado_bar (id_bar, usuario, nombre, apellido,estado) VALUES ?', [valores],(error, result) => {
+        if (error) {
+          callback(error, null);
+          return;
+        } else {
+          connection.query('UPDATE usuario SET id_tipo_usuario = ? WHERE id_usuario = ?', [newUser.id_tipo_usuario, newUser.id_usuario], callback);
+        }
+         });  
     },
+
     update: (id, updatedUser, callback) => {
       connection.query('UPDATE empleado_bar SET ? WHERE id_empleado_bar = ?', [updatedUser, id], callback);
     },
