@@ -32,7 +32,15 @@ const Reserva = {
  
 
   delete: (id, callback) => {
-    connection.query('DELETE FROM Reserva WHERE id_reserva = ?', [id], callback);
+    // Eliminar detalles de la reserva
+    connection.query('DELETE FROM detalle_reserva WHERE id_reserva = ?', [id], (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        // Después de eliminar detalles, eliminar la reserva principal
+        connection.query('DELETE FROM reserva WHERE id_reserva = ?', [id], callback);
+      }
+    });
   },
 };
 
