@@ -21,6 +21,8 @@ const DetReserva = {
 
 
   create: (newPedido, callback) => { 
+    console.log(newPedido)
+    return
     let idReserva;
     const reservaValues = [
         [newPedido.id_usuario, newPedido.fecha_reserva, newPedido.estado, newPedido.codigo_estado,newPedido.comentario]
