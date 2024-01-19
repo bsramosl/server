@@ -8,7 +8,7 @@ connection.connect();
 
 const Reserva = {
   getList: (callback) => {
-    connection.query('SELECT * FROM reserva ORDER BY fecha_reserva DESC', callback);
+    connection.query('SELECT * FROM reserva re JOIN detalle_reserva dr ON  re.id_reserva = dr.id_reserva JOIN menu me ON dr.id_menu = me.id_menu ORDER BY fecha_reserva DESC', callback);
   },
 
   getIdUser: (id, callback) => {
