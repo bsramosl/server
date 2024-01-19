@@ -4,11 +4,11 @@ const dbConfig = require('../db.config');
 
 const connection = mysql.createConnection(dbConfig);
 
-connection.connect();
+connection.connect(); 
 
 const Reserva = {
   getList: (callback) => {
-    connection.query('SELECT * FROM reserva re JOIN detalle_reserva dr ON  re.id_reserva = dr.id_reserva JOIN menu me ON dr.id_menu = me.id_menu ORDER BY fecha_reserva DESC', callback);
+    connection.query('SELECT re.id_reserva,re.id_usuario, me.id_bar,re.fecha_reserva,re.estado,re.codigo_estado,re.comentario FROM reserva re JOIN detalle_reserva dr ON  re.id_reserva = dr.id_reserva JOIN menu me ON dr.id_menu = me.id_menu ORDER BY fecha_reserva DESC', callback);
   },
 
   getIdUser: (id, callback) => {
