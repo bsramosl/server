@@ -19,15 +19,15 @@ const Reserva = {
     connection.query('SELECT * FROM reserva WHERE id_reserva = ?', [id], callback);
   },
   create: (newReserva, callback) => {
-    connection.query('INSERT INTO Reserva SET ?', newReserva, callback);
+    connection.query('INSERT INTO reserva SET ?', newReserva, callback);
   },
   update: (id, updatedReserva, callback) => {
-    connection.query('UPDATE Reserva SET ? WHERE id_reserva = ?', [updatedReserva, id], callback);
+    connection.query('UPDATE reserva SET ? WHERE id_reserva = ?', [updatedReserva, id], callback);
   },
 
   updateEstado: (id, updatedReserva, callback) => {
     console.log(updatedReserva.estado)
-    connection.query('UPDATE Reserva SET estado = ? WHERE id_reserva = ?', [updatedReserva.estado, id], callback);
+    connection.query('UPDATE reserva SET estado = ? WHERE id_reserva = ?', [updatedReserva.estado, id], callback);
   },
  
 
